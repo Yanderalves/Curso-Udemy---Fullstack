@@ -4,8 +4,10 @@ import './style.css'
 function Header() {
     return (
         <header>
-            <Link className="logo" to="/">Prime Flix</Link>
-            <Link className="button-movies" to="/favoritos">Meus filmes</Link>
+            <div className="limitar-tamanho">
+                <Link className="logo" to="/">Prime Flix</Link>
+                <Link className="button-movies" to="/favoritos">Meus filmes</Link>
+            </div>
         </header>
     );
 }
