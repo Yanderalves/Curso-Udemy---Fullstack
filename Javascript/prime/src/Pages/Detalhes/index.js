@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, json, useParams } from "react-router-dom";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
 
@@ -7,7 +7,7 @@ import "./style.css";
 function Detalhes() {
 
     const [detalhes, setDetalhes] = useState({});
-    const [favoritos, setFavoritos] = useState([]);
+    // const [favoritos, setFavoritos] = useState([]);
 
     const { id } = useParams();
 
@@ -16,13 +16,29 @@ function Detalhes() {
             .get(`movie/${id}`)
             .then(res => setDetalhes(res.data))
             .catch("Request foi de vasco")
-    }, []);
+    }, [id]);
 
-    function addFavorite(e) {
-        e.preventDefault();
-        setFavoritos([...favoritos, detalhes])
+    function addFavorite() {
+        let localStorageFavoritos = localStorage.getItem("@favoritos");
+
+        let favoritos = JSON.parse(localStorageFavoritos) || [];
+
+        const filmeJaCadastrado = favoritos.some((filmeSalvo) => filmeSalvo.id == id);
+
+        if (filmeJaCadastrado) {
+            alert("Filme ja cadastrado")
+            return;
+        }
+
+        favoritos.push(detalhes);
+
         localStorage.setItem("@favoritos", JSON.stringify(favoritos));
+
+        alert("Filme cadastrado com sucesso.");
+
     }
+
+
 
     return (
         <div className="detalhes">
@@ -34,8 +50,8 @@ function Detalhes() {
             <p className="sinopse">{detalhes.overview}</p>
             <strong>Avaliação: {Number(detalhes.vote_average).toFixed(0)} / 10</strong>
             <div className="links">
-                <a onClick={addFavorite}>Salvar</a>
-                <a target="_blank" href={`https://www.youtube.com/results?search_query=${detalhes.title} trailer`}>Tariler</a>
+                <button className="button" onClick={addFavorite}>+ Favorito</button>
+                <a className="button" target="blank" href={`https://www.youtube.com/results?search_query=${detalhes.title} trailer`}>Tariler</a>
             </div>
         </div >
     );
