@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./style.css";
+import { toast } from "react-toastify";
 
 function Favoritos() {
 
@@ -15,24 +16,30 @@ function Favoritos() {
         }
     }, [])
 
-    function removerFavorito(favorito) {
-        // favoritos.find(() => {
 
-        // })
+    function removerFavorito(id) {
 
-        console.log(favorito)
+        if(favoritos.length > 0){
+            let novoArray = (favoritos.filter((filme) => {
+                return id != filme.id
+            }))
+        
+            setFavoritos(novoArray)
+            localStorage.setItem("@favoritos", JSON.stringify(novoArray))
+
+            toast.warning("Filme removido com sucesso.")
+        }
+
     }
-
-    console.log(favoritos);
 
     return (
         <div className="favoritos">
             {favoritos.map(favorito =>
-                <ul className="favorito">
+                <ul key={favorito.id} className="favorito">
                     <li>
                         <span>{favorito.title}</span>
                         <Link to={`/filme/${favorito.id}`} >Ver detalhes</Link>
-                        <button onClick={(favorito) => removerFavorito}>Remover filme</button>
+                        <button onClick={() => removerFavorito(favorito.id)}>Remover filme</button>
                     </li>
                 </ul>)}
         </div>
