@@ -6,6 +6,7 @@
     gap: 10px;
     height: 90vh;
     overflow-y: hidden;
+    padding: 5px;
 }
 
 .detalhes .container-image {

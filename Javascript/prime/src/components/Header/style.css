@@ -8,6 +8,12 @@ header {
     height: 10vh;
 }
 
+header .logo{
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+}
+
 .button-movies {
     color: black;
     border-radius: 5px;

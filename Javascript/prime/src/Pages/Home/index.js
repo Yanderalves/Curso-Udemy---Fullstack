@@ -16,7 +16,6 @@ function Home() {
             .then(res => setFilmes(res.data.results.slice(0, 10)))
             .catch("Request foi de vasco")
             .finally(setLoading(false))
-
     }, [])
 
     if (loading) {

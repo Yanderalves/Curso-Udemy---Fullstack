@@ -36,10 +36,12 @@ function Favoritos() {
         <div className="favoritos">
             {favoritos.map(favorito =>
                 <ul key={favorito.id} className="favorito">
-                    <li>
+                    <li>    
                         <span>{favorito.title}</span>
-                        <Link to={`/filme/${favorito.id}`} >Ver detalhes</Link>
-                        <button onClick={() => removerFavorito(favorito.id)}>Remover filme</button>
+                        <div className="links">
+                            <Link className="button-favoritos" to={`/filme/${favorito.id}`} >Ver detalhes</Link>
+                            <button className="button-favoritos" onClick={() => removerFavorito(favorito.id)}>Remover filme</button>
+                        </div>
                     </li>
                 </ul>)}
         </div>
