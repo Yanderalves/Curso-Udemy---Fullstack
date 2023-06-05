@@ -1,0 +1,27 @@
+.filme {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.filme .container-image img {
+    width: 100%;
+}
+
+.link-detalhes {
+    background-color: black;
+    border: 2px solid rgb(66, 136, 235);
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.5s;
+    color: white;
+}
+
+.link-detalhes:hover {
+    background-color: rgb(66, 136, 235);
+    color: white;
+    border-color: black;
+}

@@ -1,0 +1,17 @@
+.container-filmes {
+    max-width: 800px;
+    width: 100%;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.container-image-loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.loading {
+    width: 100px;
+}
