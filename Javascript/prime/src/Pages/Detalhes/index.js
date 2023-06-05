@@ -38,7 +38,9 @@ function Detalhes() {
         toast.success("Filme cadastrado com sucesso.");
     }
 
-
+    const formatarTexto = (texto) => {
+        return `${texto.substring(0, 250)}...`
+    }
 
     return (
         <div className="detalhes">
@@ -47,7 +49,7 @@ function Detalhes() {
                 <img src={`https://image.tmdb.org/t/p/original${detalhes.poster_path}`} alt="" />
             </div>
             <strong>Sinopse</strong>
-            <p className="sinopse">{detalhes.overview}</p>
+            <p className="sinopse">{String(detalhes.overview).length > 300 ? formatarTexto(detalhes.overview) : detalhes.overview }</p>
             <strong>Avaliação: {Number(detalhes.vote_average).toFixed(0)} / 10</strong>
             <div className="links">
                 <button className="button" onClick={addFavorite}>+ Favorito</button>

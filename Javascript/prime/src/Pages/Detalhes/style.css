@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    height: 90vh;
+    overflow-y: hidden;
 }
 
 .detalhes .container-image {
